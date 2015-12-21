@@ -18,6 +18,9 @@ You can start with the interactive Spark Shell or submit a Spark job for process
 * `cd /usr/spark/bin` - Changed to bin directory
 * `spark-submit --class org.covolution.quick.App /tmp/data/uber-squick-1.0-SNAPSHOT.jar` - submits and runs the job.
 
+### Cassandra
+* The datastax Cassandra Connector is being used.
+
 ### License
 Copyright (C) 2016 Alfresco Software Limited
 
