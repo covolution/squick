@@ -12,7 +12,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <encoding>UTF-8</encoding>
         <scala.tools.version>2.10</scala.tools.version>
-        <spark.version>1.5.2</spark.version>     
+        <spark.version>1.5.2</spark.version>
+        <cassandra.connector.version>1.5.0-M3</cassandra.connector.version>
     </properties>
     <!-- library dependencies -->
     <dependencies>
@@ -36,7 +37,13 @@
             <version>${spark.version}</version>
             <scope>provided</scope>
         </dependency>
-    
+
+        <dependency>
+            <groupId>com.datastax.spark</groupId>
+            <artifactId>spark-cassandra-connector_${scala.tools.version}</artifactId>
+            <version>${cassandra.connector.version}</version>
+        </dependency>
+
         <!-- Test -->
         <dependency>
             <groupId>junit</groupId>

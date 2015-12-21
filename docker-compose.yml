@@ -22,6 +22,8 @@ sparkmaster:
     - 8080:8080
   volumes:
     - ./target:/tmp/data
+  links:
+    - cassandra:cassa
 sparkworker:
   image: gettyimages/spark
   command: /usr/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
@@ -35,7 +37,8 @@ sparkworker:
   volumes:
     - ./target:/tmp/data   
   links:
-    - sparkmaster   
+    - sparkmaster
+    - cassandra:cassa
   expose:
     - 7012
     - 7013
@@ -45,5 +48,10 @@ sparkworker:
     - 8881
   ports:
     - 8081:8081
+cassandra:
+  image: cassandra
+  ports:
+    - "9042:9042"
+    - "7199:7199"
 # The deploy command is: cd /usr/spark/bin
 # spark-submit --class org.covolution.quick.App /tmp/data/uber-squick-1.0-SNAPSHOT.jar
